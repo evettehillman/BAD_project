@@ -16,10 +16,10 @@ for DIR in "${array[@]}"
         #"434*_L001_R1_001.fastq.gz");
 
         #Nextseq data
-        for READ1 in $(find /usr/share/sequencing/nextseq/processed/$DIR/fastq/ -name "371_*_R1_001.fastq.gz");
+        for READ1 in $(find /usr/share/sequencing/nextseq/processed/$DIR/fastq/ -name "371_*_S*_R1_001.fastq.gz");
                 do
                 #create variable names
-                SAMPLE=$(basename $READ1 | sed "s/_R1_001.fastq.gz//") #strip path and extension
+                SAMPLE=$(basename $READ1 | sed "s/_S.*_R1_001.fastq.gz//") #strip path and extension
                 READ2=$(echo $READ1 | sed "s/_R1_001.fastq.gz/_R2_001.fastq.gz/") #replace with read2 extension
                 #confirm right directory and samples
                 echo 'directory & sample name' $DIR $SAMPLE #echo statements just to see if correct
@@ -34,10 +34,10 @@ for DIR in "${array[@]}"
                 ###### Approach 1
                 #check looks correct
                 echo cat $READ1 into $OUTDIR/${SAMPLE}\_combined_R1_001.fastq.gz
-                cat $READ1 >> $OUTDIR/$SAMPLE\_combined_L001_R1_001.fastq.gz
+                cat $READ1 >> $OUTDIR/$SAMPLE\_combined_R1.fastq.gz
 
                 echo cat $READ2 into $OUTDIR/${SAMPLE}\_combined_R2_001.fastq.gz
-                cat $READ2 >> $OUTDIR/$SAMPLE\_combined_L001_R2_001.fastq.gz
+                cat $READ2 >> $OUTDIR/$SAMPLE\_combined_R2.fastq.gz
  		
                 done
         done
