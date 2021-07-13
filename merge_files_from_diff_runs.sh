@@ -9,7 +9,7 @@
 OUTDIR=/home/AD/ehillman/Merged_371_sample_files
 mkdir -p $OUTDIR
 #put your folders here
-array=("201013" "201020" "201023" "201026" "201028" "201102" "201104" "201106" "201203" "201216" "210105" "210115" "210122")
+array=("201013" "201020" "201023" "201026" "201028" "201102" "201104" "201106" "201127" "201203" "201216" "210105" "210115" "210122")
 for DIR in "${array[@]}"
         do
         #Miseq data for READ1 in $(find /usr/share/sequencing/miseq/output/$DIR/Data/Intensities/BaseCalls -type f -name
@@ -19,7 +19,7 @@ for DIR in "${array[@]}"
         for READ1 in $(find /usr/share/sequencing/nextseq/processed/$DIR/fastq/ -name "371_*_S*_R1_001.fastq.gz");
                 do
                 #create variable names
-                SAMPLE=$(basename $READ1 | sed "s/_S.*_R1_001.fastq.gz//") #strip path and extension
+                SAMPLE=$(basename $READ1 | sed "s/_S[0-9]*_R1_001.fastq.gz//") #strip path and extension
                 READ2=$(echo $READ1 | sed "s/_R1_001.fastq.gz/_R2_001.fastq.gz/") #replace with read2 extension
                 #confirm right directory and samples
                 echo 'directory & sample name' $DIR $SAMPLE #echo statements just to see if correct
@@ -33,10 +33,10 @@ for DIR in "${array[@]}"
 
                 ###### Approach 1
                 #check looks correct
-                echo cat $READ1 into $OUTDIR/${SAMPLE}\_combined_R1_001.fastq.gz
+                echo cat $READ1 into $OUTDIR/${SAMPLE}\_combined_R1.fastq.gz
                 cat $READ1 >> $OUTDIR/$SAMPLE\_combined_R1.fastq.gz
 
-                echo cat $READ2 into $OUTDIR/${SAMPLE}\_combined_R2_001.fastq.gz
+                echo cat $READ2 into $OUTDIR/${SAMPLE}\_combined_R2.fastq.gz
                 cat $READ2 >> $OUTDIR/$SAMPLE\_combined_R2.fastq.gz
  		
                 done
