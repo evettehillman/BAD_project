@@ -11,11 +11,11 @@
 # Set your input directory to the concatenated files containing ALL sequencing projects you wish to analyse. The output directory to name of the output directory you want, and adapters to where the adapters.fa file for BBDUK is. 
 
 
-inputdir=/home/AD/ehillman/Project_371/Merged_371_sample_files
+inputdir=/home/AD/ehillman/Project_371/2_Merged_371_sample_files/
 outputdir=/home/AD/ehillman/Project_371/Clean_merged_371
 adapters=/home/AD/ehillman/adapters.fa
 
-mkdir -p $inputdir
+mkdir -p $outputdir
 cd $inputdir
 
 
@@ -30,32 +30,33 @@ conda activate bbtools
 
 # BBDuk will: 
 
+Ordered=t #Set to true to output reads in same order as input 
 Ktrim=r #once a reference kmer is matched in a read, that kmer and all the bases to the right will be trimmed
 K=21 #specifies the kmer size
 Mink=8 #"mink" allows it to use shorter kmers at the ends of the read 
-Hdist=2 #number of allowed missmatches
-Qtrim=r #quality-trim on right
-Trimq=30 #1 in 1000 or 99.9% 
+Hdist=2 #number of permitted missmatches
+#Qtrim=r #quality-trim on right
+#Trimq=30 #1 in 1000 or 99.9% 
 Minlen=100 #throw away reads shorter than 100bp after trimming
 Maq=30 #This will discard reads with average quality below 30
 
-for Read1 in `ls -1 *_R1.fastq.gz | sed 's/_R1.fastq.gz//'`
+for Prefix in  `ls -1 *_R1.fastq.gz | sed 's/_R1.fastq.gz//'`
 do
 
-bbduk.sh -Xmx128g in1=$i\_R1.fastq.gz in2=$i\_R2 out1=$i\_clean_R1.fastq.qz out2=$i\_clean_R2 ref=$adapters ktrim=$Ktrim k=$K mink=$Mink hdist=$Hdist tpe tbo qtrim=$Qtrim trimq=$Trimq minlen=$Minlen maq=$Maq
+bbduk.sh -Xmx128g in1=$Prefix\_R1.fastq.gz in2=$Prefix\_R2.fastq.gz out1=$Prefix\_clean_R1.fastq.gz out2=$Prefix\_clean_R2.fastq.gz ref=$adapters ordered=$Ordered ktrim=$Ktrim k=$K mink=$Mink hdist=$Hdist tpe tbo minlen=$Minlen maq=$Maq
 	
 done
 
 
 
-echo "Merging files"
+#echo "Merging files"
 
-for read1 in ${inputdir}*_R1.fastq.gz
+#for read1 in ${inputdir}*_R1.fastq.gz
 
-do
-prefix=${read1/R1.fastq.gz/}
-cat $read1 ${prefix}R2.fastq.gz > $outputdir/${prefix##*fastq/}clean_combined.fastq.gz
-done
+#do
+#prefix=${read1/R1.fastq.gz/}
+#cat $read1 ${prefix}R2.fastq.gz > $outputdir/${prefix##*fastq/}clean_combined.fastq.gz
+#done
 
 
 echo "All done"
