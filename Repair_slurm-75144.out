@@ -1,0 +1,31 @@
+You are running QC on all sequencing files in /home/AD/ehillman/Project_371/2_Merged_371_sample_files/. Outputs will be put into the folder /home/AD/ehillman/Project_371/Clean_merged_371
+Quality control...
+java -ea -Xmx128g -cp /home/AD/ehillman/.conda/envs/bbtools/bbtools/lib/current/ jgi.SplitPairsAndSingles rp -Xmx128g in1=371_10020_combined_R1.fastq.gz in2=371_10020_combined_R2.fastq.gz out1=371_10020_combined_fixed_R1.fastq.gz out2=371_10020_combined_fixed_R2.fastq.gz outs=371_10020_combined_singletons.fastq.gz repair=t
+Executing jgi.SplitPairsAndSingles [rp, -Xmx128g, in1=371_10020_combined_R1.fastq.gz, in2=371_10020_combined_R2.fastq.gz, out1=371_10020_combined_fixed_R1.fastq.gz, out2=371_10020_combined_fixed_R2.fastq.gz, outs=371_10020_combined_singletons.fastq.gz, repair=t]
+
+Set INTERLEAVED to false
+Started output stream.
+
+Input:                  	56239138 reads 		8379631562 bases.
+Result:                 	56239138 reads (100.00%) 	8379631562 bases (100.00%)
+Pairs:                  	56239138 reads (100.00%) 	8379631562 bases (100.00%)
+Singletons:             	0 reads (0.00%) 	0 bases (0.00%)
+
+Time:   			262.755 seconds.
+Reads Processed:      56239k 	214.04k reads/sec
+Bases Processed:       8379m 	31.89m bases/sec
+java -ea -Xmx128g -cp /home/AD/ehillman/.conda/envs/bbtools/bbtools/lib/current/ jgi.SplitPairsAndSingles rp -Xmx128g in1=371_15097_combined_R1.fastq.gz in2=371_15097_combined_R2.fastq.gz out1=371_15097_combined_fixed_R1.fastq.gz out2=371_15097_combined_fixed_R2.fastq.gz outs=371_15097_combined_singletons.fastq.gz repair=t
+Executing jgi.SplitPairsAndSingles [rp, -Xmx128g, in1=371_15097_combined_R1.fastq.gz, in2=371_15097_combined_R2.fastq.gz, out1=371_15097_combined_fixed_R1.fastq.gz, out2=371_15097_combined_fixed_R2.fastq.gz, outs=371_15097_combined_singletons.fastq.gz, repair=t]
+
+Set INTERLEAVED to false
+Started output stream.
+
+Input:                  	51989980 reads 		7746507020 bases.
+Result:                 	51989980 reads (100.00%) 	7746507020 bases (100.00%)
+Pairs:                  	51989980 reads (100.00%) 	7746507020 bases (100.00%)
+Singletons:             	0 reads (0.00%) 	0 bases (0.00%)
+
+Time:   			248.463 seconds.
+Reads Processed:      51989k 	209.25k reads/sec
+Bases Processed:       7746m 	31.18m bases/sec
+All done
