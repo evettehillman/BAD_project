@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 #SBATCH --partition WORK
 #SBATCH -D /home/AD/ehillman/
 #SBATCH -n 16
@@ -14,8 +14,8 @@
 
 
 # Navigate to folder containing fastq files
-#cd /home/AD/ehillman/201013/
-cd /Data/Users/ehillman/Project_371/hmn3_out/
+cd /home/AD/ehillman/Project_371/2_Merged_371_sample_files/test14/mergedR1nR2/
+#cd /Data/Users/ehillman/Project_371/hmn3_out/
 
 
 

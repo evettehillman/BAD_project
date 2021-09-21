@@ -6,11 +6,11 @@
 #SBATCH -t 48:00:00
 
 
-#inputdir=/usr/share/sequencing/nextseq/processed/201013/fastq/
-#outputdir=/home/AD/ehillman/201013
+inputdir=/usr/share/sequencing/nextseq/processed/201013/fastq/
+outputdir=/home/AD/ehillman/201013
 
-inputdir=/home/AD/ehillman/Project_371/Clean_merged_371/
-outputdir=/home/AD/ehillman/Project_371/MergedR1nR2
+#inputdir=/home/AD/ehillman/Project_371/Clean_merged_371/
+#outputdir=/home/AD/ehillman/Project_371/MergedR1nR2
 
 mkdir -p $outputdir
 cd $outputdir
@@ -28,6 +28,6 @@ done
 mv $inputdir/*combined.fastq.gz $outputdir
 
 #copy all files to /Data/Users as there is more space in that folder
-cp $outputdir/*fast.gz /Data/Users/ehillman/Project_371/MergedR1nR2
+cp $outputdir/*fastq.gz /Data/Users/ehillman/Project_371/MergedR1nR2
 
 echo "All done"

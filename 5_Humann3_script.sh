@@ -3,7 +3,7 @@
 #SBATCH -D /home/AD/ehillman/
 #SBATCH -n 16
 #SBATCH --mem-per-cpu 16G
-#SBATCH -t 168:00:00
+#SBATCH -t 500:00:00
 
 
 # Script for functional profiling of paired-end reads using HUMANn3
@@ -11,8 +11,8 @@
 
 
 # Navigate to folder containing fastq files
-#cd /home/AD/ehillman/Project_371/2_Merged_371_sample_files/test14/mergedR1nR2/
-cd /Data/Users/ehillman/Project_371/MergedR1nR2/
+cd /Data/Users/ehillman/Project_371/5_/
+
 
 
 # Load modules
